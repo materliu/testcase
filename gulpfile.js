@@ -70,6 +70,15 @@ gulp.task('clean', function () {
     return gulp.src(['.tmp', 'dist'], { read: false }).pipe($.clean());
 });
 
+var deploy = require("gulp-gh-pages");
+
+gulp.task('deploy', function () {
+    gulp.src("dist/**/*")
+        .pipe(deploy({
+            remoteUrl: 'https://github.com/materliu/testcase.git'
+        }));
+});
+
 gulp.task('build', ['html', 'images', 'fonts', 'extras']);
 
 gulp.task('default', ['clean'], function () {
