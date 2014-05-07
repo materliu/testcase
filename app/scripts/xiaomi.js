@@ -4,7 +4,11 @@
  * Time: 9:04 PM
  */
 
+"use strict";
+
 ;(function() {
+
+    "use strict";
 
     /**
      * ==============================================
@@ -49,12 +53,12 @@
 
                 setTimeout(_tempRepeat, wait);
             }());
-        }
+        };
     }
 
 
     var repeatedFun = repeat(alert, 10, 5000);
 
-    repeatedFun("hello world!");
+    repeatedFun('hello world!');
 
 })();
