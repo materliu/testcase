@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        input {
+            width: 300px;
+        }
+
+        input:disabled::-webkit-input-placeholder {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text" placeholder="test-webkit-input-placeholder-attribute" disabled/>
+
+<script>
+    (function() {
+        window.setInterval(function() {
+            var inputE = document.getElementsByTagName('input')[0];
+            var disableAttr = inputE.disabled;
+
+            if (disableAttr) {
+                inputE.removeAttribute('disabled');
+            } else {
+                inputE.disabled = true;
+            }
+
+        }, 1000);
+    })();
+</script>
+
+</body>
+</html>
