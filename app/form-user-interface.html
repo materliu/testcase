@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>form-user-interface</title>
+    <link rel="stylesheet" href="styles/form-user-interface.css"/>
+</head>
+<body>
+
+<!-- build:js scripts/vendor/modernizr.js -->
+<script src="bower_components/modernizr/modernizr.js"></script>
+<!-- endbuild -->
+
+<form name="order" method="post" action="/submit">
+    <h1>order form</h1>
+
+    <fieldset>
+        <legend>Contact Details</legend>
+        <ul>
+            <li>
+                name
+                <input name="name" type="text" required autofocus/>
+            </li>
+            <li>
+                email
+                <input name="email" type="email" required />
+            </li>
+            <li>
+                url
+                <input name="blog" type="url" required />
+            </li>
+            <li>
+                tel
+                <input name="tel" type="tel" required />
+            </li>
+            <li>
+                password
+                <input name="password" type="password" required />
+            </li>
+            <li>
+                confirm-password
+                <input name="confirm-password" type="password" required />
+            </li>
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend>Order Info</legend>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Product Code
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Qty
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Total
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>materliu</td>
+                    <td>materliu</td>
+                    <td><input name="quantity" data-price="9.9" type="number" value="1" min="1" max="10"/></td>
+                    <td>￥10</td>
+                    <td><output class="price-total" name="price-total"></output></td>
+                </tr>
+            </tbody>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>Payment detail</legend>
+        <ul>
+            <li>
+                CardNum:
+                <input type="text" maxlength="18" title="6~13 digits, no space" pattern="[0-9]{6,13}" required/>
+            </li>
+            <li>
+                Expired date:
+                <input type="month" value="2015-05"/>
+            </li>
+        </ul>
+    </fieldset>
+
+    <div class="buttons">
+        <input id="save-button" type="submit" value="save order" formaction="/save" formnovalidate/>
+        <input type="submit" value="submit order"/>
+    </div>
+
+</form>
+
+<script src="scripts/form-user-interface.js"></script>
+</body>
+</html>
