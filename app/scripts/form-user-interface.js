@@ -20,7 +20,7 @@
             }
 
             while(n-- && e) {
-                e = e.parentNode();
+                e = e.parentNode;
             }
 
             if (!e || e.nodeType !== 1) {
@@ -38,7 +38,6 @@
             qtyLength = qtyFields.length,    // 这里有一个点需要注意， 那就是如果命中的input元素只有一个的话，length的值将为undefined
             saveButtonClicked;
 
-        debugger;
 
         function saveForm() {
 
@@ -69,10 +68,21 @@
              * @private
              */
             function _cacluteSingleGoodTotalPrice(trElement) {
-                debugger;
-                var goodQunatityElement = trElement.querySelector('[name="quantity"]'),
-                    goodTotalPriceElement = trElement.querySelector('.price-total');
+                var goodQuantityElement = trElement.querySelector('[name="quantity"]'),
+                    goodSinglePrice = goodQuantityElement.dataset.price,
+                    goodTotalPriceElement = trElement.querySelector('.price-total'),
+                    goodQuantity,
+                    goodTotalPrice;
 
+                if (!(goodQuantity = goodQuantityElement.valueAsNumber)) {
+                    goodQuantity = parseFloat(goodQuantityElement.value);
+                }
+
+                goodTotalPrice = goodSinglePrice * goodQuantity;
+
+                goodTotalPrice = formatMoney(goodTotalPrice);
+
+                goodTotalPriceElement.value = goodTotalPrice;
             }
 
             if (e) {
@@ -87,7 +97,7 @@
 
                 // 计算所有商品的价格
                 for (var i=0; i<qtyLength; i++) {
-                    _cacluteSingleGoodTotalPrice(UTILS.parent(qtyFields[i]), 2);
+                    _cacluteSingleGoodTotalPrice(UTILS.parent(qtyFields[i], 2));
                 }
             }
         }
