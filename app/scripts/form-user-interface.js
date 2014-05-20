@@ -118,7 +118,33 @@
         })();
 
 
+        /*
+         * 为元素添加定制化的错误信息
+         * 这里要注意，并不是添加了定制化的错误信息，就会立即给予用户提示，提示一定是发生在用户提交form的时候
+         */
+        var doCustomValidate = function (el, msg) {
 
+            if ('setCustomValidity' in el) {
+                el.setCustomValidity(msg);
+            } else {
+                el.validationMessage = msg;
+            }
+        }
+
+        /*
+         * 为form中需要做校验的元素添加定制化的错误信息
+         */
+        var validateForm = function () {
+//            doCustomValidate(formOrder.name, '');
+//            doCustomValidate(formOrder.password, '');
+
+            if (formOrder.name.value.length < 4) {
+                doCustomValidate(formOrder.name, 'name must be at least 4 characters long');
+            }
+        }
+
+        formOrder.addEventListener('input', validateForm);
+        formOrder.addEventListener('keyup', validateForm);
 
     }
 
