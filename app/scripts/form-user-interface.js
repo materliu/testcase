@@ -143,8 +143,23 @@
             }
         }
 
+        /**
+         * 当form提交验证校验不通过的时候，调用此事件处理函数
+         * @param event
+         */
+        var handleValidateFail = function (event) {
+
+            // event.target 对象会是 input 元素
+            formOrder.className = 'invalid';
+        }
+
         formOrder.addEventListener('input', validateForm);
         formOrder.addEventListener('keyup', validateForm);
+
+        /*
+         * 注意 form的invalid事件的触发，是每个input元素验证不通过都会触发一次
+         */
+        formOrder.addEventListener('invalid', handleValidateFail, true);
 
     }
 
