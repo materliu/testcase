@@ -161,6 +161,15 @@
          */
         formOrder.addEventListener('invalid', handleValidateFail, true);
 
+
+
+
+        // 进入特性检测阶段
+        Modernizer.load({
+            test: Modernizer.inputtypes.month,
+            nope: 'monthpicker.js'
+        });
+
     }
 
     /**
