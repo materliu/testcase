@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>iframe-width-height-container</title>
+
+    <style>
+        iframe {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+
+<iframe id="iframe-container" src="iframe-width-height-iframe.html" frameborder="0"></iframe>
+
+<script>
+    var iframeContainer = document.getElementById('iframe-container');
+
+    iframeContainer.onload = function () {
+        console.log(this.scrollHeight);
+        console.log(this.scrollWidth);
+
+        var iframeDocument = iframeContainer.contentWindow.document;
+
+        console.log(iframeDocument.body.clientWidth);
+        console.log(iframeDocument.body.clientHeight);
+
+        /*
+         * 默认浏览器会为 body 添加一个 margin: 8px; 的修饰， 所以要么在iframe中
+         * 用css修饰，消除这8px的影响， 要么在这里把8px考虑进去
+         */
+        this.style.width = iframeDocument.body.clientWidth + 'px';
+        this.style.height = iframeDocument.body.clientHeight + 'px';
+
+        console.log(this.scrollHeight);
+        console.log(this.scrollWidth);
+    }
+</script>
+
+</body>
+</html>
