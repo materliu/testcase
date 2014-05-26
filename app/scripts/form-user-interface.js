@@ -8,6 +8,7 @@
     'use strict';
 
     var UTILS = {
+
         /**
          * 获取 e 元素的第n个父节点
          * @param e
@@ -28,6 +29,29 @@
             }
 
             return e;
+        },
+
+        /**
+         * 获取一个element上label属性的值, 如果这个element没有label属性,
+         * 则判断这个element的父元素是否是一个label元素， 若是， 则取这个label的innerText
+         * @param element
+         */
+        getLabel: function (element) {
+
+            // labels属性，属于新规范 Returns a NodeList of all the label elements that the form control is associated with.
+            if ('labels' in element && element.labels.length > 0) {
+                return element.labels[0].textContent;
+            }
+
+            /*
+             * <label id="js-command-bar-field-label">test<input type="text" data-hotkey="s, /" name="q" id="js-command-bar-field" placeholder="Search or type a command" tabindex="1" autocapitalize="off" data-username="materliu" autocomplete="off" spellcheck="false"></label>
+             * 如上这种情况, $('js-command-bar-field-label').textContent 和 innerText 返回的都是 test
+             */
+            if (element && element.parentNode && element.parentNode.tagName.toLowerCase() === 'label') {
+                return element.parentNode.textContent;
+            }
+
+            return '';
         }
     };
 
