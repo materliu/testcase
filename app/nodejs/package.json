@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-testcase",
+  "version": "0.0.1",
+  "description": "used to test nodejs-program",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "testcase",
+    "nodejs"
+  ],
+  "author": "materliu",
+  "license": "MIT"
+}
