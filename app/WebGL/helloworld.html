@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>test-webgl</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    function initWebGL(canvas) {
+        var gl = null,
+            msg = "your browser does not support webgl, ";
+
+        try {
+            gl = canvas.getContext('experimental-webgl');
+        } catch (e) {
+            msg += e.toString();
+        }
+
+        if (!gl) {
+            alert(msg);
+            throw new error(msg);
+        }
+
+        return gl;
+
+    }
+
+    function initViewport(gl, canvas) {
+        gl.viewport(0, 0, canvas.width, canvas.height);
+    }
+</script>
+</html>
