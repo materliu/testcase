@@ -4,6 +4,10 @@
  * Time: 5:55 PM
  */
 
+console.log = function (content) {
+	process.stdout.write(content + '\n');
+}
+
 var EventEmitter = require('events').EventEmitter;
 
 var Counter = function (init) {
