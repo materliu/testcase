@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+此页面用来测试同源DELETE请求会不会存在 Preflight Options 窥探
+
+<button onclick="testdelete()">点击测试</button>
+
+<script>
+    window.testdelete = function () {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('DELETE', 'http://localhost:3000/api/products/3');
+
+        alert(1);
+        xhr.send();
+        alert(2);
+    }
+</script>
+</body>
+</html>
