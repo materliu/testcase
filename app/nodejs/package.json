@@ -2,7 +2,7 @@
   "name": "nodejs-testcase",
   "version": "0.0.1",
   "description": "used to test nodejs-program",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,5 +11,8 @@
     "nodejs"
   ],
   "author": "materliu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
